@@ -1,0 +1,84 @@
+Write Javascript to validate the username and password of the registration page.
+
+CODE:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fc87b4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        button {
+            background-color: #ff0062;
+            color: white;
+            padding: 12px;
+            margin-left: 40%;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <h2><center>REGISTRATION FORM</center></h2>
+        <input type="text" id="username" name="username" required placeholder="Username:">
+        <input type="password" id="password" name="password" required placeholder="Password:">
+        <button type="button" onclick="validateForm()">Submit</button>
+    </form>
+    <script>
+        function validateForm() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var usernameRegex = /^[a-zA-Z]{6,}$/;
+            if (!usernameRegex.test(username)) {
+                alert("Username should contain alphabets only and have a minimum length of 6 characters.");
+                return;
+            }
+            var passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+            if (!passwordRegex.test(password)) {
+                alert("Password should have a minimum length of 6 characters and contain at least one alphabet, one digit, and one special character.");
+                return;
+            }
+            alert("Form submitted successfully!");
+        }
+    </script>
+</body>
+</html>
+
+
